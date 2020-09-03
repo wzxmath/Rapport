@@ -1,0 +1,221 @@
+\documentclass{amsart}
+\usepackage{geometry}
+%\geometry{left=3.0cm,right=3.0cm,top=3.8cm,bottom=2.5cm}
+%\pagestyle{empty}
+% below are some packages that are needed for certain symbols, graphics, colors.
+% safest to just include these.
+\usepackage{indentfirst}  
+\usepackage{times}
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage[dvips]{graphics}
+\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{hyperref, amsmath, amsthm, amsfonts, amscd, flafter,epsf}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,amscd}
+\usepackage{color}
+\usepackage[T1]{fontenc}
+%\usetikzlibrary{matrix,arrows,decorations.patheoremorphing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% below are shortcuts for equation, eqnarray,
+% itemize and enumerate environments
+
+\usepackage{amssymb} 
+\usepackage{mathtools}
+\usepackage{tikz} 
+\usepackage[utf8]{inputenc}
+
+\usepackage{cleveref}
+\crefname{section}{§}{§§}
+\Crefname{section}{§}{§§}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing} 
+\usetikzlibrary{chains} 
+
+\tikzset{node distance=2em, ch/.style={circle,draw,on chain,inner sep=2pt},chj/.style={ch,join},every path/.style={shorten >=4pt,shorten <=4pt},line width=1pt,baseline=-1ex}
+
+\newcommand{\alabel}[1]{%
+	\(\alpha_{\mathrlap{#1}}\)
+}
+
+\newcommand{\mlabel}[1]{
+	\(#1\)
+}
+
+\let\dlabel=\alabel
+\let\ulabel=\mlabel
+
+\newcommand{\dnode}[2][chj]{%
+	\node[#1,label={below:\dlabel{#2}}] {};
+}
+
+\newcommand{\dnodea}[3][chj]{%
+	\dnode[#1,label={above:\ulabel{#2}}]{#3}
+}
+
+\newcommand{\dnodeanj}[2]{%
+	\dnodea[ch]{#1}{#2}
+}
+
+\newcommand{\dnodenj}[1]{%
+	\dnode[ch]{#1}
+}
+
+\newcommand{\dnodebr}[1]{%
+	\node[chj,label={below right:\dlabel{#1}}] {};
+}
+
+\newcommand{\dnoder}[2][chj]{%
+	\node[#1,label={right:\dlabel{#2}}] {};
+}
+
+\newcommand{\dydots}{%
+	\node[chj,draw=none,inner sep=1pt] {\dots};
+}
+
+\newcommand{\QRightarrow}{%
+	\begingroup
+	\tikzset{every path/.style={}}%
+	\tikz \draw (0,3pt) -- ++(1em,0) (0,1pt) -- ++(1em+1pt,0) (0,-1pt) -- ++(1em+1pt,0) (0,-3pt) -- ++(1em,0) (1em-1pt,5pt) to[out=-75,in=135] (1em+2pt,0) to[out=-135,in=75] (1em-1pt,-5pt);
+	\endgroup
+}
+
+\newcommand{\QLeftarrow}{%
+	\begingroup
+	\tikz
+	\draw[shorten >=0pt,shorten <=0pt] (0,3pt) -- ++(-1em,0) (0,1pt) -- ++(-1em-1pt,0) (0,-1pt) -- ++(-1em-1pt,0) (0,-3pt) -- ++(-1em,0) (-1em+1pt,5pt) to[out=-105,in=45] (-1em-2pt,0) to[out=-45,in=105] (-1em+1pt,-5pt);
+	\endgroup
+}
+
+\newcommand\be{\begin{equation}}
+\newcommand\ee{\end{equation}}
+\newcommand\bea{\begin{eqnarray}}
+\newcommand\eea{\end{eqnarray}}
+\newcommand\bi{\begin{itemize}}
+	\newcommand\ei{\end{itemize}}
+\newcommand\ben{\begin{enumerate}}
+	\newcommand\een{\end{enumerate}}
+
+\newcommand{\abs}[1]{\lvert#1\rvert} 
+\newcommand{\norm}[1]{\lVert#1\rVert}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Theorem / Lemmas et cetera
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{assumption}[theorem]{Assumption}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par%
+	\pushQED{\qed}%
+	\normalfont \topsep6\p@\@plus6\p@\relax%
+	\trivlist%
+	\item[\hskip\labelsep%
+	#1]\ignorespaces%
+}{%
+	\popQED\endtrivlist\@endpefalse%
+}
+\makeatother
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\bbC}{\ensuremath{\mathbb{C}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\simrightarrow}{\stackrel{\sim}{\rightarrow}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\fM}{\mathcal{M}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\ft}{\mathfrak{t}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fI}{\mathfrak{fI}}
+\newcommand{\fr}{\mathfrak{r}} 
+\newcommand{\fk}{\mathfrak{k}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\Qp}{\mathbb{Q}_p}
+\newcommand{\BdR}{\text{B}_{\text{dR}}}
+\newcommand{\GL}{\text{GL}}
+\newcommand{\gr}{\text{gr}}
+\newcommand{\ad}{\text{ad}}
+\newcommand{\Tor}{\text{Tor}}
+\newcommand{\ind}{\text{ind}}
+\newcommand{\Ind}{\text{Ind}}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\soc}{\text{soc}}
+\newcommand{\Spec}{\text{Spec}}
+\newcommand{\Fil}{\text{Fil}}
+\newcommand{\pdR}{\text{pdR}}
+\newcommand{\oN}{\overline{N}}
+\newcommand{\oP}{\overline{P}}
+\newcommand{\inj}{\text{inj}}
+\newcommand{\dw}{\dot{w}}
+\newcommand{\ds}{\dot{s}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\trivar}{X_{\text{tri}}(\overline{r})}
+\newcommand{\tildefg}{\widetilde{\mathfrak{g}}}
+\newcommand{\mtwo}[4]{\begin{pmatrix}
+	#1&#2\\#3&#4
+\end{pmatrix}}
+\newcommand{\mthree}[9]{\begin{pmatrix}
+	#1&#2&#3\\#4&#5&#6\\#7&#8&#9
+\end{pmatrix}}
+\newcommand{\Uni}[1]{\begin{pmatrix}
+	1&#1\\&1
+\end{pmatrix}}
+\newcommand{\Fp}{ \F_p }
+
+
+\numberwithin{equation}{section}
+\title{Report of the progress of the year 2019-2020}
+\author{Zhixiang Wu\\ Thesis advisor: Benjamin Schraen}
+\date{}
+%\pagestyle{empty} 
+%\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+\begin{document}
+\maketitle
+My work of this year mainly consists of two part. From the September 2019 to January 2020, I was working on the problem of finite-presentation of supersingular representations of $p$-adic Lie groups, especially for groups $\GL_2$ and $\GL_3$, continuing my work in my master thesis. The result for $\GL_2$ was written up into a paper and was published recently (\cite{wu2020supersingular}). In the middle January 2020, I switched to the problem of the local models of trianguline variety at points with irregular Hodge-Tate weights, where the regular case is treated in \cite{breuil2019local} by my advisor and his coauthors. I proved the existence of a local model and also the irreducibility at these poins. The related locally analytic socle conjecture of $p$-adic automorphic forms in the irregular cases was formulated generalizing the conjecture for regular cases in \cite{breuil2016versI} and \cite{breuil2015versII}. The solution of the conjecture is still under seeking.
+\section{On finite presentations of supersingular representations}
+The proof of non-finitely-presentedness for supersingular representations of $\GL_2(F)$, when $F\neq \Q_p$ consists of two steps. The first step is the result of Yongquan Hu to reduce the non-finitely-presentedness of a supersingular $\pi$ to the non-adimissible of a submodule $I^+(\sigma,\pi)$ over $A:=k[[\mtwo{1}{\cO_F}{}{1}]]$ which is finitely generated over $A[X]_{\phi}$ where $\phi$ denotes the element $\mtwo{\varpi}{}{}{1}$. The next step is then using the coherentness of the ring $A[X]_{\phi}$ (by Emerton \cite{emerton2008class}) and the the non-adimissibility of the universal supersingular representation $\ind_{KZ}^{G}\sigma$, which can be concretely computed, to deduce the non-adimissibility of $\pi$.\par
+To generlize Hu's result to $\GL_3$, I firstly tried to understand the result for $\GL_2$ in a more straightforward way. Assume that the kernel $\ind_{KZ}^G\sigma\twoheadrightarrow \pi$ is finitely generated by elements in a finite $k$-space $S$ where $\pi$ is supersingular. 
+%which we assume is stable under $KZ$ and is contained in $I^+(\sigma)$ by multiplying powers of $\mtwo{\varpi}{}{}{1}$ since $G=PK=NTK=\cup_{n\in\N}\mtwo{1}{}{}{\varpi^{n}}\mtwo{\varpi^{\N}}{\cO_F}{}{1}KZ$.
+We consider elements in $\ind_{KZ}^G\sigma$ as functions over $G/KZ$ the $0$-simplices of the tree for $A_1$. Then we also have a surjection of $A[X]_{\phi}$-modules $h:I^{+}(\sigma):=[\mtwo{\varpi^{\N}}{\cO_{F}}{}{1},\sigma]\twoheadrightarrow I^{+}(\sigma)$. We claim that the kernel of $h$, which is just the intersection of the kernel of $\ind_{KZ}^G\sigma\twoheadrightarrow \pi$ and $I^+(\sigma)$, is finitely generated as a $A[X]_{\phi}$-module by elements in the kernel that is in a subspace of small elements: $\oplus_{n\leq M} [\mtwo{\varpi^{n}}{\cO_{F}}{}{1},\sigma]\oplus_{n\leq M} [\mtwo{}{1}{\varpi}{}\mtwo{\varpi^{n}}{\cO_{F}}{}{1},\sigma]$ for some sufficiently large integer $M$ which is much larger than diameter of elements in $S$ (the diameter is measured by the $G$-invariant distance on the tree). In fact, assume that $g_1s_1+\cdots+ g_ks_k\in I^+(\sigma)$ where $a_i\in S, g_i\in G$. We have $\ind_{KZ}^G(\sigma)=I^+(\sigma)\oplus I^-(\sigma)$ where $I^-(\sigma)=\mtwo{}{1}{\varpi}{}I^+(\sigma)$. Assume some $g_is_i\in I^+(\sigma)$. Let $e$ be the vertex of coset $KZ$ of the tree. Let $\mtwo{\varpi^m}{x}{}{1}KZ,m\geq 0$ be an element such that $m$ is the largest integer such that $g_is_i\in[\mtwo{\varpi^m}{x}{}{1}\mtwo{\varpi^{\N}}{\cO_F}{}{1}KZ,\sigma]$. Then since the diameter of $g_is_i$ is bounded, we see  $g_is_i\in[\oplus_{n=1}^M\mtwo{\varpi^m}{x}{}{1}\mtwo{\varpi^{n}}{\cO_F}{}{1}KZ,\sigma]$ by the shape of the tree (by the maximality of $m$, there exists $y_1\neq y_2\in \cO_F/\varpi$ such that the support of $g_is_i$ intersects with two branches from the point $\mtwo{\varpi^m}{x}{}{1}KZ$: $\mtwo{\varpi^{m+1}}{x+\varpi^my_i}{}{1}\mtwo{\varpi^{\N}}{\cO_F}{}{1}KZ$. Thus the distance from any point in the support of $g_is_i$ to the vertex $\mtwo{\varpi^m}{x}{}{1}KZ$ is bounded by the diameter of $g_is_i$). Then the element $\mtwo{\varpi^m}{x}{}{1}^{-1}g_is_i\in [\oplus_{n=1}^M\mtwo{\varpi^{n}}{\cO_F}{}{1}KZ,\sigma]$ is small, in $I^+(\sigma)$ and $g_is_i$ is then lies in the sub-$A[X]_{\phi}$-module of $I^+(\sigma)$ generated by small elements in the kernel of $h$. Thus we may assume all the $g_is_i$ is not in $I^+(\sigma)$ for all $i$, then the projection of $g_is_i$ to $I^+(\sigma)$ is small, thus the element $\sum g_is_i$ is itself small. Now we have that $I^+(\sigma,\pi)$ is of finite presentation, by the coherence of $A[X]_{\phi}$, we get that $\Tor_d^A(k,I^+(\sigma,\pi))$ is a finitely generated $k[X]$-module. By the supersingular assumption (maybe we also need the adimissibility, so we have the vanishing after applying the ordinary functor), the $X$ acts nilpotently on $I^+(\sigma,\pi)^{U}$. Thus the $k$-space $I^+(\sigma,\pi)^{U}$ is finite dimensional. The original proof of Hu by manipulating matrices also relies implicitly the geometry of the tree and the nilpotence of the Hecke operator in the supersingular case (cf. \cite[Prop. 4.11]{hu2012diagrammes}).\par
+But the seemly conceptual method fails in every step for $\GL_3$ except things about ordinary part. Firstly, one difference for $\GL_3$ is that the boundary of a secter given by cosets $N_0T^+KZ$ is no longer finite (in $\GL_2$ case, it is a point, so small elements are finite-dimensional). For this reason, I cannot find a relationship between the finite-presentedness between the $G$-representation and its sub-$N_0T_+$-modules. Even worse, I don't know whether for the universal one $\ind_{KZ}^G\sigma/(T_1,T_2)$, its sub-$N_0T^+$-module $I^+(\sigma, \ind_{KZ}^G\sigma/(T_1,T_2))$ is of finite presentation. I guess it is not (but maybe true for $I^+(\sigma, \ind_{KZ}^G\sigma/(T_1T_2))$). The best thing I can get in this direction is that if $\pi$ is of finite presentation, then $I^+(\sigma,\pi)$ admit a surjection from a finite presentation module such that elements in the kernel of the surjection is killed by some element in $T_+$ but I cannot move further. The second trouble is that the ring $k[[N_0]]\{\phi_1,\phi_2\}$ is no longer coherent, as also suggested in \cite{zabradi2018multivariable}. Thus finite presentation of the module doesn't imply the adimissibility. However, one can use relations from $T_1,T_2=0$ to prove that $I^+(\sigma,\pi)$ is a finitely generated $k[[N_0]][X]$-module, where $X$ is the matrix $\text{diag}(\varpi^2,\varpi,1)$, but is probably not of finite presentation for the universal one. Moreover, it turns out that even for principal series representations of $\GL_3(\Q_p)$, which are of finite presentations, it is not known (to me, after trying, or maybe anyone else) whether the module $I^+(\sigma,\pi)$ is admissible or of finite presentation for principal series. Thus the chance of using modules appeared in the generlized Montreal functors to study the finite presentation is not very hopeful.\par
+Other problem I have considered (usually suggested by my advisor) including that whether the restriction of a supersingular representation is irreducible when restricted to a Borel subgroup, a result of Pa{\v{s}}k{\=u}nas for $\GL_2$. I got some interesting equations between Hecke operators, but not enough to get the result for $\GL_3$. Till now, I don't know how to see the universal supersingular representation of $\GL_3(\Q_p)$ is not irreducible or is not admissible. I considered also the problem of Gel'fand-Kirillov dimension, but is soon stopped by my advisor and then I turn to the trianguline variety.
+\section{Local model of trianguline variety}
+The local model of trianguline variety at the generic points with integral irregular Hodge-Tate weight should exist by replacing the original local model $X_B$, where $B$ denotes the Borel subgroup of $\GL_n$ with a variety $X_P$, where $P$ is a parabolic subgroup corresponding to the irregular Hodge-Tate weight if $X_P$ satisfies the required properties. The regular local model $X_{B}$ is known to be Cohen-Macaulay by Bezrukavnikov-Riche from geometric representation theory (\cite{riche2008geometric}) and a crucial step in \cite{breuil2019local} is to prove that $X_B$ is normal using the Cohen-Macaulayness result. It was conveyed to me by Riche that the geometric representation theory method is unlikely to work in the parabolic case and I was suggested to try the Frobenius splitting method. I used Sagemath to compute the examples for $n\leq 4$ and the result coincided with the theory. I then begin to think on the Frobenius splitting method to prove the normality or Cohen-Macaulayness of $X_P$. I firstly could use the result of normality of $X_B$ to reduce the normality of $X_P$, assuming the existence of Frobenius splitting of $X_P$, to the connectedness of fibers of a map $X_B\rightarrow X_P$. I then proved that all the fibers of the map is connected in March, which turned out to be a non-trivial. The existence of Frobenius splitting blocked me for a long time untill I was saved by my advisor in end of May. The connectedness of certain fibers of the morphism $X_B\rightarrow X_P$ is enough to guarantee that $X_P$ is locally irreducible at certain poins, which is enough for the local model and the local irreducibility of trianguline variety.\par
+There will be some direct applications of the irreducibility result on the problem of locally analytic socles of the $p$-adic automorphic forms. Given a good point on the eigenvarity where the local model exists, one then can show that certain expected locally analytic representation constructed by Orlik-Strauch appears in the representation in the space of $p$-adic automorphic forms associated to the point, which is stronger than assumption of the existence of the point on the eigenvarity. The proof should be a slight modification of arguments in \cite{breuil2019local} together with our local irreducibility result (cf. \cite{Wu2020unibranch}).\par
+The result of existence of companion points and its proof for regular cases in \cite{breuil2019local} is profound. One ingredient is the result on existence of certain cycles on the local model corresponding with modules over Lie algebras. The proof of the geometric representation theory results for $X_B$ is written in \cite{riche2008geometric} and one can easily find that the result we need is very classical $K$-theory of Steinberg varieties (\cite{Chriss1997RepresentationTA}) since $X_B$ is Cohen-Macaulayness. For $X_P$, similar result should hold using result on generlized Steinberg variety in \cite{douglass2014equivariant} assuming the Cohen-Macaulayness of $X_P$. Unfortunately the Cohen-Macaulayness is not available now, but for some cases (smooth and lower dimensional cases), the existence of cycles is known to be true.
+\subsection{Perspectives}
+The most important target is investigating the locally analytic socle conjecture in the irregular, namely proving similar results on the existence of companion points in \cite{breuil2019local}. On the one hand, one need to understand better the geometry of the local model such as the existence of Frobenius splitting and Cohen-Macaulayness. On the other hand, one could study the $\GL_3$ case where the geometry has been computed by hand. Following the suggestion of the advisor, I will consider the famillies of $p$-adic modular forms by varying weight. It is expected that certain properties of the familly will specialized to the point we are studying and help to prove that certain cycle exists on the eigenvarity.\par
+Another interesting problem is to see whether there exist the local models for the points with non-integral weights, that is, beyond the case of almost de Rham-representations, which seems possible as Fontaine has classified all $B_{\text{dR}}$-representations. If the result is indeed true, the proof should admit no essential difficulty although might be quite complicated.\par
+One may try to find out whether the characteristic cycles, once defined, of generalized $\mathcal{D}$-modules appeared in the theory of singular localization in \cite{Backelin2015singular} fits the theory of cycles on the generalized Steinberg varieties in \cite{douglass2014equivariant}. This problem should be accessible but is of no importance to me.
+\bibliography{bibfile.bib}
+\bibliographystyle{plain}
+\end{document} 
